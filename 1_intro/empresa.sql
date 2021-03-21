@@ -39,6 +39,30 @@ LOCK TABLES `funcionarios` WRITE;
 INSERT INTO `funcionarios` VALUES (1,'Juliana','23'),(2,'João','30'),(3,'Maria','42'),(4,'Pedro','19');
 /*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `servicos`
+--
+
+DROP TABLE IF EXISTS `servicos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `servicos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `servicos`
+--
+
+LOCK TABLES `servicos` WRITE;
+/*!40000 ALTER TABLE `servicos` DISABLE KEYS */;
+INSERT INTO `servicos` VALUES (1,'desenvolvimento'),(2,'análise de banco de dados'),(3,'análise de infraestrutura'),(4,'projeto de softwares'),(5,'design de interfaces');
+/*!40000 ALTER TABLE `servicos` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -49,4 +73,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-21 10:46:23
+-- Dump completed on 2021-03-21 12:38:36
