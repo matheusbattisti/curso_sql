@@ -1,0 +1,94 @@
+# 1 - ONE TO ONE
+CREATE DATABASE relacoes;
+
+USE relacoes;
+
+CREATE TABLE estudantes(
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	nome VARCHAR(100),
+	turma VARCHAR(5)
+);
+
+CREATE TABLE contatos (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	telefone VARCHAR(20),
+	estudante_id INT NOT NULL,
+	FOREIGN KEY (estudante_id) REFERENCES estudantes(id)
+);
+
+INSERT INTO estudantes (nome, turma) VALUES ("Matheus", "304d");
+INSERT INTO estudantes (nome, turma) VALUES ("João", "101a");
+
+INSERT INTO contatos (telefone, estudante_id) VALUES ("(48)9999-9999", 1);
+INSERT INTO contatos (telefone, estudante_id) VALUES ("(48)8888-8888", 2);
+
+SELECT estudantes.nome, contatos.telefone
+FROM estudantes
+JOIN contatos ON contatos.estudante_id = estudantes.id;
+
+# 2 - ONE TO MANY
+
+CREATE TABLE clientes (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	nome VARCHAR(100),
+	data_nascimento DATE
+);
+
+CREATE TABLE pedidos (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	qtd_itens INT(10),
+	total FLOAT,
+	cliente_id INT NOT NULL,
+	FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+);
+
+
+INSERT INTO clientes (nome, data_nascimento) VALUES ("Matheus", "1991-05-01");
+INSERT INTO clientes (nome, data_nascimento) VALUES ("João", "1985-02-04");
+
+INSERT INTO pedidos (qtd_itens, total, cliente_id) VALUES (5, 214.54, 1);
+INSERT INTO pedidos (qtd_itens, total, cliente_id) VALUES (3, 120.00, 1);
+INSERT INTO pedidos (qtd_itens, total, cliente_id) VALUES (2, 89.47, 1);
+
+
+SELECT clientes.nome, pedidos.id AS pedido_id
+FROM clientes
+JOIN pedidos ON pedidos.cliente_id = clientes.id
+WHERE pedidos.cliente_id = 1;
+
+# 3 - MANY TO MANY
+
+CREATE TABLE materias (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	nome VARCHAR(100)
+);
+
+CREATE TABLE estudante_materia (
+	estudante_id INT NOT NULL,
+	materia_id INT NOT NULL,
+	FOREIGN KEY (estudante_id) REFERENCES estudantes(id),
+	FOREIGN KEY (materia_id) REFERENCES materias(id)
+);
+
+INSERT INTO materias (nome) VALUES ("Matemática");
+INSERT INTO materias (nome) VALUES ("Química");
+INSERT INTO materias (nome) VALUES ("Física");
+
+INSERT INTO estudantes (nome, turma) VALUES ("Maria", "202b");
+INSERT INTO estudantes (nome, turma) VALUES ("Amanda", "104c");
+
+INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (1, 1);
+INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (1, 2);
+INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (1, 3);
+INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (2, 1);
+INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (2, 2);
+INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (2, 3);
+INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (3, 1);
+INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (3, 2);
+INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (3, 3);
+INSERT INTO estudante_materia (estudante_id, materia_id) VALUES (4, 2);
+
+// ALUNOS QUIMICA
+SELECT * FROM alunos
+JOIN estudante_materia ON estudante_materia.estudante_id = alunos.id 
+AND estudante_materia.materia_id = 2;

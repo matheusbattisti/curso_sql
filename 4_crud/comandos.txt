@@ -1,0 +1,4 @@
+# 53 - CRUD
+CREATE DATABASE cadastro;
+
+CREATE TABLE pessoas (nome VARCHAR(100), rg VARCHAR(7), cpf VARCHAR(11), limite INT(10));

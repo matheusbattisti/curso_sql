@@ -1,0 +1,32 @@
+# 1 - INNER JOIN
+SELECT employees.first_name, employees.last_name, salaries.salary
+FROM employees
+INNER JOIN salaries
+ON employees.emp_no = salaries.emp_no;
+
+# EXERCICIO 22
+
+SELECT employees.first_name, salaries.salary
+FROM employees
+JOIN salaries
+ON salaries.emp_no = employees.emp_no
+
+# 2 LEFT JOIN
+
+USE constraints;
+
+INSERT INTO pessoas (nome, idade) VALUES ("José", 55);
+
+SELECT pessoas.nome, enderecos.*
+FROM pessoas
+LEFT JOIN enderecos
+ON pessoas.id = enderecos.pessoa_id;
+
+# 3 RIGHT JOIN
+
+INSERT INTO pessoas (nome, idade) VALUES ("Otávio", 16);
+
+SELECT pessoas.nome, enderecos.*
+FROM pessoas
+RIGHT JOIN enderecos
+ON pessoas.id = enderecos.pessoa_id;

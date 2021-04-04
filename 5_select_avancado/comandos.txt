@@ -1,0 +1,84 @@
+
+# 65 - AVANÇANDO NO SELECT
+CREATE DATABASE employees
+
+USE employees
+
+source employees.sql
+
+# EXERCICIO 14
+
+SELECT * FROM titles WHERE emp_no >= 11500;
+
+# 69 - DISTINCT
+
+SELECT DISTINCT gender FROM employees;
+SELECT DISTINCT title FROM titles;
+
+# 74 - ORDER BY
+
+SELECT * FROM salaries WHERE salary > 60000 ORDER BY salary DESC
+
+# EXERCíCIO 15
+
+SELECT * FROM titles ORDER BY title DESC;
+
+# 75 - limite
+
+SELECT * FROM salaries WHERE salary > 80000 LIMIT 10;
+
+# EXERCíCIO 16
+
+SELECT * FROM titles ORDER BY title ASC LIMIT 5;
+
+# 76 - Função MIN
+
+SELECT MIN(salary) FROM salaries;
+
+# 77 - Função MAX
+
+SELECT MAX(salary) FROM salaries;
+
+# 78 - COUNT
+
+SELECT COUNT(*) FROM salaries WHERE salary > 100000;
+
+# EXERCíCIO 17
+
+SELECT COUNT(*) FROM departments;
+
+# 79 - AVG
+
+SELECT AVG(salary) FROM salaries;
+
+# 80 - SUM
+
+SELECT SUM(salary) FROM salaries;
+
+# 81 - LIKE
+
+SELECT * FROM employees WHERE first_name LIKE '%ber%';
+
+# EXERCICIO 18
+
+SELECT * FROM titles WHERE title LIKE '%Engineer%';
+
+# 82 - IN
+
+SELECT * FROM dept_emp WHERE dept_no IN ('d004', 'd005', 'd006');
+
+# EXERCICIO 19
+
+SELECT * FROM employees WHERE last_name IN ('Facello', 'Peac');
+
+# 83 - BETWEEN
+
+SELECT * FROM dept_emp WHERE dept_no BETWEEN 'd001' AND 'd008';
+
+# EXERCICIO 20
+
+SELECT * FROM salaries WHERE salary BETWEEN 125000 AND 225000;
+
+# 84 - ALIAS
+
+SELECT SUM(salary) AS soma_salario FROM salaries;

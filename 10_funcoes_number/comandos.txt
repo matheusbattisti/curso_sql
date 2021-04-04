@@ -1,0 +1,23 @@
+# 1 - CEIL
+
+SELECT amount, CEIL(amount) AS arredondado FROM payment;
+
+# 2 - COUNT
+
+SELECT COUNT(*) FROM payment;
+
+# 3 - FLOOR
+
+SELECT amount, CEIL(amount) AS para_cima, FLOOR(amount) AS para_baixo FROM payment;
+
+# 4 - MAX
+
+SELECT MAX(amount) AS maior_pagamento FROM payment;
+
+# 5 - MIN
+
+SELECT MIN(amount) AS menor_pagamento FROM payment;
+
+# 6 - SUM
+
+SELECT SUM(amount) AS soma_pagamentos FROM payment;

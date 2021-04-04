@@ -1,0 +1,96 @@
+CREATE DATABASE constraints;
+
+# 1 - NOT NULL
+CREATE TABLE pessoas(
+  nome VARCHAR(100) NOT NULL,
+  idade INT
+);
+
+INSERT INTO pessoas (nome) VALUES ("Matheus");
+
+INSERT INTO pessoas (nome, idade) VALUES (NULL, 30);
+
+# 2 - UNIQUE
+ALTER TABLE pessoas ADD COLUMN email VARCHAR(255) UNIQUE;
+
+INSERT INTO pessoas (nome, idade, email) VALUES ("João", 30, "joao@gmai.com");
+
+# 3 - PRIMARY KEY
+CREATE TABLE produtos(
+  id INT NOT NULL,
+  nome VARCHAR(255),
+  sku VARCHAR(10),
+  PRIMARY KEY (id)
+);
+
+INSERT INTO produtos (id, nome, sku) VALUES (1, 'Batedeira', '123asd');
+
+INSERT INTO produtos (id, nome, sku) VALUES (NULL, 'Fogão', '1244');
+
+INSERT INTO produtos (id, nome, sku) VALUES (1, 'TV', '555');
+
+# 4 - AUTO INCREMENT
+
+CREATE TABLE frutas (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  nome VARCHAR(200)
+)
+
+INSERT INTO frutas (nome) VALUES ("Maçã");
+INSERT INTO frutas (nome) VALUES ("Mamão");
+INSERT INTO frutas (nome) VALUES ("Morango");
+
+# 5 - FOREIGN KEY
+DROP TABLE pessoas;
+
+CREATE TABLE pessoas(
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  nome VARCHAR(100) NOT NULL,
+  idade INT
+);
+
+CREATE TABLE enderecos (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  rua VARCHAR(100),
+  numero VARCHAR(10),
+  pessoa_id INT NOT NULL,
+  FOREIGN KEY (pessoa_id) REFERENCES pessoas(id)
+);
+
+INSERT INTO enderecos (rua, numero, pessoa_id) VALUES ("Rua teste", "12", 555);
+
+INSERT INTO pessoas (nome, idade) VALUES ("Pedro", 32);
+INSERT INTO enderecos (rua, numero, pessoa_id) VALUES ("Rua teste", "12", 1);
+
+DROP TABLE pessoas; // após insert
+
+# 6 - INDEX
+
+CREATE INDEX index_nome
+ON pessoas (nome);
+
+SHOW INDEX FROM pessoas;
+
+# 7 - DELETE INDEX
+
+DROP INDEX index_nome ON pessoas;
+
+# EXERCICIO 21
+CREATE DATABASE banco;
+
+USE banco;
+
+CREATE TABLE contas (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  nome VARCHAR(100),
+  sobrenome VARCHAR(100),
+  saldo INT,
+  data_nascimento DATE
+);
+
+CREATE INDEX idx_saldo
+ON contas (saldo);
+
+INSERT INTO contas (nome, sobrenome, saldo, data_nascimento) VALUES ("Matheus", "Battisti", 10000, "1991-02-05");
+INSERT INTO contas (nome, sobrenome, saldo, data_nascimento) VALUES ("Aléxia", "Couto", 25000, "1995-08-30");
+INSERT INTO contas (nome, sobrenome, saldo, data_nascimento) VALUES ("Bruno", "Ribeiro", 100000, "1982-12-15");

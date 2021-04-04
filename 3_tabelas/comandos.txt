@@ -1,0 +1,30 @@
+# 38 - TABELA COM TIPO DE DADO STRING
+CREATE TABLE produtos (nome VARCHAR(100), sku CHAR(5), informacoes MEDIUMTEXT);
+
+# 40 - INSERIR DADO TIPO STRING
+INSERT INTO produtos (nome, sku, informacoes) VALUES ('Playstation 5', 'PS5ABC', 'É um videogame de última geração');
+
+# 43 - TABELA COM TIPO DE DADO NUMERO
+CREATE TABLE servidores (nome VARCHAR(100), espaco_disco INT(10), ligado BOOL);
+
+INSERT INTO servidores (nome, espaco_disco, ligado) VALUES ('servidor 1', 123994, 0);
+
+# 46 - TABELA COM DATA
+CREATE TABLE aniversarios (nome VARCHAR(100), data_nascimento DATE);
+
+INSERT INTO aniversarios (nome, data_nascimento) VALUES ('João Pedro', '1991-05-02');
+
+# 49 - ALTERAR TABELA
+CREATE TABLE funcionarios (nome VARCHAR(100));
+
+# 50 - ADICIONAR COLUNA
+ALTER TABLE funcionarios ADD COLUMN profissao VARCHAR(100);
+
+# 51 - REMOVER COLUNA
+ALTER TABLE funcionarios DROP COLUMN profissao;
+
+# 52 - ALTERAR COLUNA
+ALTER TABLE funcionarios ADD COLUMN data_nascimento VARCHAR(100);
+
+ALTER TABLE funcionarios MODIFY COLUMN data_nascimento DATE;
+

@@ -1,0 +1,72 @@
+# 1 - CHAR LENGTH
+
+SELECT nome, CHAR_LENGTH(nome) AS qtd_chars
+FROM funcionarios;
+
+# EXERCICIO 26
+
+SELECT address_id, address, CHAR_LENGTH(postal_code)
+FROM address
+ORDER BY address_id DESC;
+
+# 2 - CONCAT
+
+SELECT CONCAT(nome, " tem ", idade, " anos de idade!") AS nome_e_idade
+FROM funcionarios;
+
+# EXERCICIO 27
+
+SELECT actor_id, CONCAT(first_name, " ", last_name) FROM actor;
+
+# 3 - CONCAT_WS
+
+SELECT CONCAT_WS(",", nome, idade) AS nome_e_idade
+FROM funcionarios;
+
+# 4 - FORMAT
+USE sakila;
+
+SELECT customer_id, amount, FORMAT(amount, 1) AS formatado FROM payment;
+
+# 5 - INSTr
+
+SELECT email, INSTR(email, '@') FROM customer;
+
+# 6 - LCASE
+
+SELECT first_name, last_name, LCASE(CONCAT(first_name, " ", last_name)) FROM sakila.customer;
+
+# 7 - LEFT
+
+SELECT title, LEFT(title, 8) FROM film WHERE film_id = 1;
+
+# EXERCICIO 28
+
+SELECT address_id, LEFT(last_update, 10) as data FROM address 
+WHERE address_id > 150;
+
+# 8 - REPLACE
+
+SELECT REPLACE(name, "Action", "Ação") FROM category;
+
+# EXERCICIO 29
+
+SELECT REPLACE(first_name, "MARY", "Mary") as nome, 
+REPLACE(last_name, "SMITH", "Smith") as sobrenome 
+FROM customer WHERE last_name = "SMITH";
+
+# 9 - RIGHT
+
+SELECT RIGHT(last_update, 8) AS horario FROM category;
+
+# 10 - SUBSTRING
+
+SELECT SUBSTR(last_update, 6, 2) AS mês FROM sakila.actor;
+
+# 11 - UCASE
+
+SELECT UCASE(description) FROM film;
+
+# EXERCICIO 30
+
+SELECT country_id, UCASE(country) AS country FROM country;

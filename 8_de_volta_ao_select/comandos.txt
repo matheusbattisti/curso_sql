@@ -1,0 +1,89 @@
+# 1 - UNION
+
+SELECT dept_no FROM departments UNION SELECT dept_no FROM dept_emp;
+
+# 2 - UNION ALL
+
+SELECT dept_no FROM departments UNION ALL SELECT dept_no FROM dept_emp;
+
+# 3 - GROUP BY
+
+SELECT gender, COUNT(gender) as 'Qtd por gênero'
+FROM employees
+GROUP BY gender;
+
+# EXERCICIO 23
+
+SELECT hire_date, COUNT(hire_date) as 'Data de contratação'
+FROM employees
+GROUP BY hire_date;
+
+# 4 - HAVING
+
+SELECT title, COUNT(title) as 'titulos'
+FROM titles
+GROUP BY title;
+
+# só com 100 pessoas +
+SELECT title, COUNT(title) as 'titulos'
+FROM titles
+GROUP BY title
+HAVING COUNT(title) > 100;
+
+# EXERCICIO 24
+
+SELECT hire_date, COUNT(hire_date) as 'Data de contratação'
+FROM employees
+GROUP BY hire_date
+HAVING COUNT(hire_date) > 50;
+
+# 5 - subquery
+
+SELECT first_name, (
+	SELECT SUM(salary)
+    FROM salaries
+    WHERE employees.emp_no = salaries.emp_no
+) AS soma_salario
+FROM employees;
+
+# 6 - EXISTS
+
+- somente salarios maiores que 1 milhao
+
+SELECT first_name, last_name, (
+	SELECT SUM(salary)
+    FROM salaries
+    WHERE employees.emp_no = salaries.emp_no
+    LIMIT 1
+) AS soma_salario
+FROM employees
+WHERE EXISTS (
+	SELECT salary
+    FROM salaries
+    WHERE employees.emp_no = salaries.emp_no
+    HAVING SUM(salary) > 1000000
+)
+
+# 7 - ANY
+
+SELECT first_name
+FROM employees
+WHERE emp_no = ANY (
+	SELECT emp_no
+    FROM salaries
+    WHERE salary > 150000
+);
+
+# EXERCICIO 25
+
+-- Criação de tabela dos posts
+CREATE TABLE posts(
+    -- Coluna de ID, com auto incremento e chave primária
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    -- Coluna de título do post, no máximo 255 caracteres
+    titulo VARCHAR(255),
+    -- Coluna de texto do post
+    corpo_do_post TEXT,
+    -- Coluna de tags para o post
+    tags VARCHAR(255)
+);

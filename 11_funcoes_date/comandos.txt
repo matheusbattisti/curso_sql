@@ -1,0 +1,39 @@
+# 1 - ADDDATE
+
+SELECT last_update, ADDDATE(last_update, "5 DAYS") AS data_atualizada FROM actor;
+
+# 2 - ADDTIME
+
+SELECT last_update, ADDTIME(last_update, "3 02:10:05") AS data_atualizada FROM actor;
+
+# 3 - DATEDIFF
+
+SELECT DATEDIFF(last_update, ADDDATE(last_update, "1 DAY")) AS diferenca_de_datas FROM sakila.actor;
+
+# 4 - DATE_FORMAT
+
+SELECT DATE_FORMAT(last_update, "%d/%m/%Y") AS data_formatada FROM actor;
+
+# 5 - DAY
+
+SELECT last_update, DAY(last_update) AS dia FROM actor;
+
+# 6 - DAYOFWEEK
+
+SELECT last_update, DAYOFWEEK(last_update) AS dia FROM actor;
+
+# 7 - DAYOFYEAR
+
+SELECT last_update, DAYOFYEAR(last_update) AS dia_do_ano FROM actor;
+
+# 8 - WEEKOFYEAR
+
+SELECT last_update, WEEKOFYEAR(last_update) AS semana FROM actor;
+
+# 9 - MONTH
+
+SELECT last_update, MONTH(last_update) AS mes FROM actor;
+
+# 10 - YEAR
+
+SELECT last_update, YEAR(last_update) AS ano FROM actor;
