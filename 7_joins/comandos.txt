@@ -6,10 +6,10 @@ ON employees.emp_no = salaries.emp_no;
 
 # EXERCICIO 22
 
-SELECT employees.first_name, salaries.salary
+SELECT employees.first_name, employees.gender, titles.title
 FROM employees
-JOIN salaries
-ON salaries.emp_no = employees.emp_no
+INNER JOIN titles
+ON employees.emp_no = titles.emp_no;
 
 # 2 LEFT JOIN
 

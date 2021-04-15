@@ -1,0 +1,188 @@
+html, body {
+  height: 100%;
+}
+
+/* NAVBAR */
+#brand-logo {
+  width: 50px;
+}
+
+.navbar.navbar-expand-lg {
+  background-color: #000;
+  font-weight: bold;
+}
+
+.navbar.navbar-expand-lg a {
+  color: #FFF;
+}
+
+/* HOME */
+#main-banner {
+  background-image: url("../img/pizza-banner.jpg");
+  height: 300px;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  background-position-y: -300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-banner h1 {
+  color: #FFF;
+  background-color: #000;
+  text-align: center;
+  padding: 30px;
+  text-transform: uppercase;
+  width: 550px;
+  font-size: 50px;
+}
+
+#main-container {
+  margin-bottom: 100px;
+  padding: 50px 0;
+  text-align: center;
+  min-height: 50%;
+}
+
+#main-container h2 {
+  margin-bottom: 30px;
+}
+
+.row {
+  margin: 0;
+}
+
+#pizza-form {
+  max-width: 550px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#pizza-form label {
+  font-weight: bold;
+}
+
+.btn.btn-primary {
+  background-color: #000;
+  border-color: #000;
+}
+
+/* ALERTA */
+.alert {
+  border-radius: 0;
+  text-align: center;
+  margin-bottom: 0;
+  font-weight: bold;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.alert.alert-success {
+  border: 2px solid #155724;
+}
+
+.alert.alert-warning {
+  border: 2px solid #856404;
+}
+
+.alert p {
+  margin-bottom: 0;
+}
+
+/* DASHBOARD */
+.delete-btn, .update-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.delete-btn {
+  padding-top: 10px;
+}
+
+.delete-btn i {
+  color: #721c24;
+  font-size: 20px;
+}
+
+.update-btn {
+  margin-left: 10px;
+}
+
+.update-btn i {
+  color: #004085;
+}
+
+.update-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.status-input {
+  width: 65%;
+}
+
+.table ul {
+  text-align: left;
+}
+
+/* FOOTER */
+footer {
+  position: relative;
+  width: 100%;
+  height: 175px;
+  background-color: #000;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* RESPONSIVO */
+@media(max-width: 425px) {
+
+  #main-banner {
+    background-position-y: 0;
+  }
+
+  #main-banner h1 {
+    padding: 10px;
+  }
+
+  #main-container {
+    margin-bottom: 0;
+  }
+
+  #main-container .container {
+    padding: 10px;
+  }
+
+  .form-group .btn.btn-primary {
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+    text-transform: uppercase;
+  }
+
+  .table-container {
+    padding: 0;
+  }
+
+  .table td, .table th {
+    padding: .5rem;
+  }
+
+  th span {
+    display: none;
+  }
+
+  .table thead th:nth-child(5),
+  .table thead th:nth-child(6),
+  .table tbody td:nth-child(5),
+  .table tbody td:nth-child(6) {
+    display: none;
+  }
+
+}
